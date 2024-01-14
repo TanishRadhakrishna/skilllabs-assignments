@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #calculator {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    #display {
+      font-size: 2em;
+      padding: 10px;
+      text-align: right;
+      border-bottom: 1px solid #ccc;
+    }
+
+    #buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    button {
+      font-size: 1.5em;
+      padding: 15px;
+      border: none;
+      background-color: #00ab25;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #d4d4d4;
+    }
+
+    #equals {
+      grid-column: span 1;
+      background-color: #ff8c19;
+      color: #fff;
+    }
+    #equals:hover {
+        background-color: #ffbd77;
+        }
+    #div {
+      grid-column: span 1;
+      background-color: #ff8c19;
+      color: #fff;
+    }
+    #div:hover {
+        background-color: #ffbd77;
+        }
+    #product {
+      grid-column: span 1;
+      background-color: #ff8c19;
+      color: #fff;
+    }
+    #product:hover {
+        background-color: #ffbd77;
+        }
+    #minus {
+      grid-column: span 1;
+      background-color: #ff8c19;
+      color: #fff;
+    }
+    #minus:hover {
+        background-color: #ffbd77;
+        }
+    #plus {
+      grid-column: span 1;
+      background-color: #ff8c19;
+      color: #fff;
+    }
+    #plus:hover {
+        background-color: #ffbd77;
+        }
+    #clear {
+        background-color: #ff2718;
+    }
+    #clear:hover {
+        background-color: #ff987b;
+        }
+    #reset {
+        background-color: #0078db;
+    }
+    #reset:hover {
+        background-color: #89c2ff;
+        }
+  </style>
+</head>
+<body>
+
+<div id="calculator">
+  <div id="display">0</div>
+  <div id="buttons">
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button id="div">/</button>
+
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button id="product">*</button>
+
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button id="minus">-</button>
+
+    <button>0</button>
+    <button>.</button>
+    <button id="plus">+</button>
+    <button id="equals">=</button>
+
+    <button id="clear">Clear</button>
+    <button id="reset">Reset</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const display = document.getElementById('display');
+    const buttons = document.getElementById('buttons');
+    let currentInput = '';
+
+    buttons.addEventListener('click', function (event) {
+      const button = event.target;
+      if (button.tagName === 'BUTTON') {
+        if (button.id === 'equals') {
+          try {
+            const result = eval(currentInput);
+            display.textContent = result;
+            currentInput = result.toString();
+          } catch (error) {
+            display.textContent = 'Error';
+          }
+        } else if (button.id === 'clear') {
+          currentInput = '';
+          display.textContent = '0';
+        } else if (button.id === 'reset') {
+          currentInput = '';
+          display.textContent = '0';
+        } else {
+          currentInput += button.textContent;
+          display.textContent = currentInput;
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
